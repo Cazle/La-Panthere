@@ -12,7 +12,11 @@ button {
     transition: all .3s ease-in-out;
     outline: none!important;
 }
-
+#bloc-0{
+    position:sticky;
+    top: 0;
+    z-index: 5;
+}
 a:hover {
     text-decoration: none;
     cursor: pointer;
@@ -232,6 +236,7 @@ a:hover {
 .l-bloc h6 a,
 .l-bloc p a {
     color: rgba(0, 0, 0, .6);
+    margin-top: auto;
 }
 
 .d-bloc .panel .a-btn:hover,
@@ -694,6 +699,9 @@ col-sm-6, h1{
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial;
 }
 
+figure, p{
+    font-size: 20px;
+}
 .cta-hero {
     margin-top: 22px;
     color: #FFFFFF!important;
@@ -734,6 +742,9 @@ h3 {
 }
 
 h1 {
+    font-size: 23px;
+    width: 80%;
+    margin: 0 0 2% 10%;
     color: #333333!important;
 }
 
@@ -791,7 +802,7 @@ h4 {
     
 }
 .text-center mg-lg tc-white tight-width-whitespace, p{
-    font-size: 15px;
+    font-size: 18px;
 }
 
 .btn-atomic-tangerine {
@@ -1055,4 +1066,9 @@ h4 {
     .bloc-mob-center-text {
         text-align: center;
     }
+}
+#googleMap{
+    width: 100%;
+    height: 350px;
+    margin-right: 0%;
 }
