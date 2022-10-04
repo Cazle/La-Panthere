@@ -2,13 +2,16 @@
 <html lang="fr">
 <head>
 	<meta charset="utf-8">
-	<meta content="L'agence La Panthère est une agence en Web Design Lyonnaise qui aide les entreprises à devenir attractives et visibles sur Internet" name="description">
+	<meta name="description" content="L'agence La Panthère est une agence en Web Design Lyonnaise qui aide les entreprises à devenir attractives et visibles sur Internet" name="description">
 	<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
 	<link href="favicon.jpg" rel="shortcut icon" type="image/png">
-	<link href="./css/bootstrap.css" rel="stylesheet" type="text/css">
-	<link href="./css/font-awesome.css" rel="stylesheet" type="text/css">
-	<link href="./css/et-line.css" rel="stylesheet" type="text/css">
+	<link href="./css/bootstrap.min.css" rel="stylesheet" type="text/css">
+	<link href="./css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link href="./css/et-line.min.css" rel="stylesheet" type="text/css">
 	<link href="style.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.1/dist/leaflet.css"
+	integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14="
+	crossorigin=""/>
 	<title>La Panthère Web Design</title><!-- Analytics -->
 	<!-- Analytics END -->
 </head>
@@ -41,7 +44,7 @@
 							<img alt="Agence La Panthère, agence web Lyon, création logo Lyon" class="center-block image-resize-mode" src="img/logo.png" width="100">
 							<p class="text-center hero-bloc-text tc-white">Agence La Panthère</p>
 							<div class="text-center">
-								<a aria-label="Cliquez ici pour nous contacter" class="btn btn-lg btn-clean btn-rd cta-hero btn-atomic-tangerine" href="contact.html" id="cta-hero">Contact</a>
+								<a aria-label="Cliquez ici pour nous contacter" class="btn btn-lg btn-clean btn-rd cta-hero btn-atomic-tangerine" href="#bloc-8" id="cta-hero">Contact</a>
 							</div>
 						</div>
 					</div>
@@ -60,21 +63,21 @@
 							<div class="text-center">
 								<span class="et-icon-browser sm-shadow icon-dark-slate-blue icons icon-lg"></span>
 							</div>
-							<h3 class="mg-md text-center">Web design</h3>
+							<h2 class="mg-md text-center">Web design</h2>
 							<p class="text-center">Que vous ayez un site web qui a besoin d'un rafraîchissement ou que vous partiez de zéro, laissez-nous vous réaliser un design dont vous serez fier.</p>
 						</div>
 						<div class="col-sm-4">
 							<div class="text-center">
 								<span class="et-icon-presentation sm-shadow icon-dark-slate-blue icons icon-lg"></span>
 							</div>
-							<h3 class="mg-md text-center">&nbsp;Stratégie</h3>
+							<h2 class="mg-md text-center">&nbsp;Stratégie</h2>
 							<p class="text-center">Plutôt que de suggérer des designs à la mode, nous travaillerons avec vous pour comprendre vos objectifs commerciaux afin de vous proposer le meilleur design possible.<br></p>
 						</div>
 						<div class="col-sm-4">
 							<div class="text-center">
 								<span class="et-icon-edit sm-shadow icon-dark-slate-blue icons icon-lg"></span>
 							</div>
-							<h3 class="mg-md text-center">Illustrations</h3>
+							<h2 class="mg-md text-center">Illustrations</h2>
 							<p class="text-center">Un bon design n'est rien sans de bonnes illustrations. Laissez faire notre équipe de graphistes talentueux pour donner à vos pages une touche finale d'élégance.</p>
 						</div>
 					</div>
@@ -123,7 +126,7 @@
 					</div>
 					<div class="row tight-width-whitespace portfolio-row">
 						<div class="col-sm-6">
-							<a aria-label="Photo pour la création d'un site internet pour voyageur" data-caption="Création d'un site internet pour un voyageur" data-frame="snapshot-lb" data-gallery-id="gallery-1" data-lightbox="img/3." href="#"><img alt="Lyon web design logo agence web meilleure agence, Création d'un site web pour voyageur" class="img-responsive portfolio-thumb" src="img/3.png"></a>
+							<a aria-label="Photo pour la création d'un site internet pour voyageur" data-caption="Création d'un site internet pour un voyageur" data-frame="snapshot-lb" data-gallery-id="gallery-1" data-lightbox="img/3.png" href="#"><img alt="Lyon web design logo agence web meilleure agence, Création d'un site web pour voyageur" class="img-responsive portfolio-thumb" src="img/3.png"></a>
 							<h3 class="mg-md text-center">Création d'un site internet pour un voyageur</h3>
 							<p class="text-center">Nous avons élaboré un site internet et des illustrations pour sublimer les vidéos et les articles de ce voyageur.</p>
 						</div>
@@ -166,18 +169,18 @@
 						</div>
 						<div class="col-sm-6">
 							<h2>Emplacement de l'Agence</h2>
-							<div aria-label="Plan google pour trouver l'agence La Panthère" id="googleMap"></div>
-							<script>
-							             function myMap() {
-							             var mapProp= {
-							             center:new google.maps.LatLng(51.508742,-0.120850),
-							             zoom:5,
-							             };
-							             var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-							}
-							</script> 
-							<script src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY&callback=myMap">
-							</script>
+							<div id="map"></div>
+							<script src="https://unpkg.com/leaflet@1.9.1/dist/leaflet.js"
+                             integrity="sha256-NDI0K41gVbWqfkkaHj15IzU7PtMoelkzyKp8TOaFQ3s="
+                             crossorigin=""></script>
+							 <script>
+								var map = L.map('map').setView([45.7694376, 4.8300793], 17);
+								var marker = L.marker([45.7694376, 4.8300793]).addTo(map);
+								L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                 maxZoom: 19,
+                                 attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+                                }).addTo(map);
+							 </script>
 							<p>contact@agencelapanthere.com<br>
 							2 place Sathonay 69001 Lyon<br>
 							Ouvert de 9h à 18h, du lundi au vendredi<br></p>
@@ -226,9 +229,7 @@
 	</script> 
 	<script src="./js/blocs.js">
 	</script> 
-	<script defer src="./js/jquery.touchSwipe.js">
+	<script src="./js/jquery.touchSwipe.js">
 	</script> 
-	<script src="./js/gmaps.js">
-	</script>
 </body>
 </html>
